@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ recipe.title }}</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .recipe {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .recipe h1 {
+            color: #d81b60;
+        }
+        .recipe img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .recipe p {
+            font-size: 16px;
+        }
+        .actions {
+            margin-top: 20px;
+        }
+        .actions a {
+            display: inline-block;
+            background-color: #d81b60;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="recipe">
+            <h1>{{ recipe.title }}</h1>
+            <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+            <p>{{ recipe.description }}</p>
+            <p><strong>Ingredients:</strong> {{ recipe.ingredients }}</p>
+            <p><strong>Instructions:</strong> {{ recipe.instructions }}</p>
+            <div class="actions">
+                <a href="{% url 'recipe_update' recipe.pk %}">Edit Recipe</a>
+                <a href="{% url 'recipe_delete' recipe.pk %}" style="background-color: #FF5722;">Delete Recipe</a>
+                <a href="{% url 'recipe_list' %}" style="background-color: #4CAF50;">Back to Recipe List</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

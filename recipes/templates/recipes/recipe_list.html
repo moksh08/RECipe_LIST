@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Indian Recipes</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f2f2f2;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .recipe {
+            background-color: #fff;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .recipe h2 {
+            color: #d81b60;
+        }
+        .recipe p {
+            font-size: 16px;
+        }
+        .recipe img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .add-recipe {
+            display: block;
+            background-color: #d81b60;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #d81b60;">Indian Recipes</h1>
+        {% for recipe in recipes %}
+            <div class="recipe">
+                <h2>{{ recipe.title }}</h2>
+                <img src="{{ recipe.image.url }}" alt="{{ recipe.title }}">
+                <p>{{ recipe.description }}</p>
+                <a href="{% url 'recipe_detail' recipe.pk %}" style="color: #d81b60;">View Recipe</a>
+            </div>
+        {% endfor %}
+        <a href="{% url 'recipe_create' %}" class="add-recipe">Add New Recipe</a>
+    </div>
+</body>
+</html>
